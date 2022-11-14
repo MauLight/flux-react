@@ -4,6 +4,8 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import 'bootstrap/js/dist/dropdown';
+import 'bootstrap/dist/css/bootstrap.css'
 
 //include your index.scss file into the bundle
 import "../styles/index.css";

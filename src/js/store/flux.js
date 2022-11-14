@@ -27,6 +27,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({favpokemons: [...store.favpokemons, {name}]});
 
 			},
+
+			delMon: (id) => {
+				let elem = document.getElementById(id).title;
+				const store = getStore();
+				setStore({favpokemons: store.favpokemons.filter(fav => fav.name.name !== elem)});
+			},
+
+
 			// Use getActions to call a function within a fuction
 			getPokedex: async () => {
 				await fetch('https://pokeapi.co/api/v2/pokemon?offset=20&limit=20')

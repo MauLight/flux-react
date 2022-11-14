@@ -20,7 +20,7 @@ export const Home = () => {
 									<Link to={'/details/' + pokemon.name}>
 										<p>{pokemon.name}</p>
 									</Link>
-									<button onClick={() => actions.favMon(pokemon)} >fav</button> 
+									<button className="btn" onClick={() => actions.favMon(pokemon)} >fav</button> 
 								</li>
 							)
 						})
@@ -34,6 +34,7 @@ export const Home = () => {
 									<Link to={'/details/' + pokemon.name}>
 										<p>{pokemon.name}</p>
 									</Link>
+									<button className="btn" onClick={() => actions.favMon(pokemon)} >fav</button> 
 								</li>
 							)
 						})
@@ -47,6 +48,7 @@ export const Home = () => {
 									<Link to={'/details/' + pokemon.name}>
 										<p>{pokemon.name}</p>
 									</Link>
+									<button className="btn" onClick={() => actions.favMon(pokemon)} >fav</button> 
 								</li>
 							)
 						})
