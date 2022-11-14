@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			pokemons: [],
 			pokemons2: [],
 			pokemons3: [],
+			favpokemons: [],
 
 			demo: [
 				{
@@ -20,6 +21,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+
+			favMon: (name) => {
+				const store = getStore();
+				setStore({favpokemons: [...store.favpokemons, {name}]});
+
+			},
 			// Use getActions to call a function within a fuction
 			getPokedex: async () => {
 				await fetch('https://pokeapi.co/api/v2/pokemon?offset=20&limit=20')

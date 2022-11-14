@@ -20,6 +20,7 @@ export const Home = () => {
 									<Link to={'/details/' + pokemon.name}>
 										<p>{pokemon.name}</p>
 									</Link>
+									<button onClick={() => actions.favMon(pokemon)} >fav</button> 
 								</li>
 							)
 						})

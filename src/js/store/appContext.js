@@ -8,7 +8,7 @@ export const Context = React.createContext();
 // https://github.com/4GeeksAcademy/react-hello-webapp/blob/master/src/js/layout.js#L35
 const injectContext = PassedComponent => {
 	const StoreWrapper = props => {
-		//this will be passed as the contenxt value
+		//this will be passed as the context value
 		const [state, setState] = useState(
 			getState({
 				getStore: () => state.store,
@@ -26,6 +26,7 @@ const injectContext = PassedComponent => {
 			state.actions.getPokedex();
 			state.actions.getPokedex2();
 			state.actions.getPokedex3();
+
 
 			/**
 			 * EDIT THIS!
