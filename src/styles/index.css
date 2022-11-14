@@ -1,3 +1,36 @@
 /* 
     General Styles
 */
+
+h1:hover {
+color:tomato !important;
+}
+.names:hover {
+    background-color:tomato !important;
+}
+.btn:hover {
+    background-color:tomato !important;
+    color: whitesmoke !important;
+}
+
+.names {
+    text-align: center;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  a:link {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: #8d8d8d;
+  }
+
+  p {
+    margin: 0%;
+  }

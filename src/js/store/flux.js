@@ -1,6 +1,11 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+
+			pokemons: [],
+			pokemons2: [],
+			pokemons3: [],
+
 			demo: [
 				{
 					title: "FIRST",
@@ -16,6 +21,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+			getPokedex: async () => {
+				await fetch('https://pokeapi.co/api/v2/pokemon?offset=20&limit=20')
+					.then((response) => response.json())
+					.then((data) => setStore({ pokemons: data.results }))
+					.catch((error) => console.log('error'));
+			},
+			getPokedex2: async () => {
+				await fetch('https://pokeapi.co/api/v2/pokemon?offset=40&limit=20')
+					.then((response) => response.json())
+					.then((data) => setStore({ pokemons2: data.results }))
+					.catch((error) => console.log('error'));
+			},
+			getPokedex3: async () => {
+				await fetch('https://pokeapi.co/api/v2/pokemon?offset=60&limit=20')
+					.then((response) => response.json())
+					.then((data) => setStore({ pokemons3: data.results }))
+					.catch((error) => console.log('error'));
+			},
+
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},

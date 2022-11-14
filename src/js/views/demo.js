@@ -3,41 +3,79 @@ import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
-import "../../styles/demo.css";
-
 export const Demo = () => {
-	const { store, actions } = useContext(Context);
+	//const { store, actions } = useContext(Context);
+	const [name, setName] = useState([]);
+	const [poke, setPoke] = useState([]);
+	const [poke1, setPoke1] = useState([]);
+
+	const getPokeAsync = async () => {
+		try {
+			const getPoke = await fetch('https://pokeapi.co/api/v2/pokemon?offset=20&limit=20');
+			const data = await getPoke.json();
+			console.log(data)
+			setName(data.results);
+		}
+		catch {
+			console.log('error');
+		}
+	};
+
+	const getAgainPokeAsync = async () => {
+		await fetch('https://pokeapi.co/api/v2/pokemon?offset=40&limit=20')
+			.then((response) => response.json())
+			.then((data) => setPoke(data.results))
+			.catch((error) => console.log('error'));
+	};
+
+	const getAgainPokeAsync2 = async () => {
+		await fetch('https://pokeapi.co/api/v2/pokemon?offset=60&limit=20')
+			.then((response) => response.json())
+			.then((data) => setPoke1(data.results))
+			.catch((error) => console.log('error'));
+	};
+
+	useEffect(() => {
+		getPokeAsync();
+	}, []);
+
+	useEffect(() => {
+		getAgainPokeAsync();
+	}, []);
+	useEffect(() => {
+		getAgainPokeAsync2();
+	}, []);
 
 	return (
-		<div className="container">
+		<div className="container d-inline-flex justify-content-center">
 			<ul className="list-group">
-				{store.demo.map((item, index) => {
-					return (
-						<li
-							key={index}
-							className="list-group-item d-flex justify-content-between"
-							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
-							{// Conditional render example
-							// Check to see if the background is orange, if so, display the message
-							item.background === "orange" ? (
-								<p style={{ color: item.initial }}>
-									Check store/flux.js scroll to the actions to see the code
-								</p>
-							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
-							</button>
-						</li>
-					);
-				})}
+				{
+					!!name && name.map((item, i) => {
+						return (
+							<li className="names list-group-item" key={i}>{item.name}</li>
+						)
+					})
+				}
 			</ul>
-			<br />
-			<Link to="/">
-				<button className="btn btn-primary">Back home</button>
-			</Link>
+			<ul>
+				{
+					!!poke && poke.map((item, i) => {
+						return (
+							<li className="names list-group-item" key={i}>{item.name}</li>
+						)
+					})
+				}
+			</ul>
+			<ul>
+				{
+					!!poke1 && poke1.map((item, i) => {
+						return (
+							<li className="names list-group-item" key={i}>{item.name}</li>
+						)
+					})
+				}
+			</ul>
+
 		</div>
 	);
 };
