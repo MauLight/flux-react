@@ -35,29 +35,82 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
+			getPokedex: async () => {
+				let url = 'https://pokeapi.co/api/v2/pokemon?offset=20&limit=20';
+				let options_get = {
+					method: 'GET',
+					headers: {
+						'content-type': 'application/json',
+						'Access-Control-Allow-Origin': '*'
+					}
+				}
+				try {
+					const response = await fetch(url, options_get);
+					const data = await response.json();
+					console.log(data);
+					setStore({ pokemons: data.results });
+				}
+				catch(error) {
+					console.log(error);
+				}
+			
+			},
+
 			// Use getActions to call a function within a fuction
+			/*
 			getPokedex: async () => {
 				await fetch('https://pokeapi.co/api/v2/pokemon?offset=20&limit=20')
 					.then((response) => response.json())
 					.then((data) => setStore({ pokemons: data.results }))
 					.catch((error) => console.log('error'));
 			},
+			*/
 			getPokedex2: async () => {
-				await fetch('https://pokeapi.co/api/v2/pokemon?offset=40&limit=20')
-					.then((response) => response.json())
-					.then((data) => setStore({ pokemons2: data.results }))
-					.catch((error) => console.log('error'));
+				let url = 'https://pokeapi.co/api/v2/pokemon?offset=40&limit=20';
+				let options_get = {
+					method: 'GET',
+					headers: {
+						'content-type': 'application/json',
+						'Access-Control-Allow-Origin': '*'
+					}
+				}
+				try {
+					const response = await fetch(url, options_get);
+					const data = await response.json();
+					console.log(data);
+					setStore({ pokemons2: data.results });
+				}
+				catch(error) {
+					console.log(error);
+				}
+			
 			},
-			getPokedex3: async () => {
-				await fetch('https://pokeapi.co/api/v2/pokemon?offset=60&limit=20')
-					.then((response) => response.json())
-					.then((data) => setStore({ pokemons3: data.results }))
-					.catch((error) => console.log('error'));
+
+			getPokedex3:  async () => {
+				let url = 'https://pokeapi.co/api/v2/pokemon?offset=60&limit=20';
+				let options_get = {
+					method: 'GET',
+					headers: {
+						'content-type': 'application/json',
+						'Access-Control-Allow-Origin': '*'
+					}
+				}
+				try {
+					const response = await fetch(url, options_get);
+					const data = await response.json();
+					console.log(data);
+					setStore({ pokemons3: data.results });
+				}
+				catch(error) {
+					console.log(error);
+				}
+			
 			},
 
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
@@ -82,3 +135,5 @@ const getState = ({ getStore, getActions, setStore }) => {
 };
 
 export default getState;
+
+
